@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allons-nous enfin mettre la main sur ce chieur en série ? - Midi Libre</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #c41e3a;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 12px 0;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #c41e3a;
+        }
+
+        .breadcrumb {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 20px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .breadcrumb a {
+            color: #c41e3a;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            background-color: white;
+            padding-bottom: 40px;
+        }
+
+        .article-header {
+            border-bottom: 3px solid #c41e3a;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .category {
+            display: inline-block;
+            background-color: #c41e3a;
+            color: white;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        .article-meta {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .article-meta strong {
+            color: #333;
+        }
+
+        .featured-image {
+            width: 100%;
+            margin: 30px 0;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-caption {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 3px solid #c41e3a;
+        }
+
+        .article-content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .article-content p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .article-content h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 30px 0 15px 0;
+            color: #222;
+            border-left: 4px solid #c41e3a;
+            padding-left: 15px;
+        }
+
+        .article-content h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 25px 0 15px 0;
+            color: #333;
+        }
+
+        .article-content blockquote {
+            border-left: 4px solid #c41e3a;
+            padding-left: 20px;
+            margin: 25px 0;
+            font-style: italic;
+            color: #555;
+            background-color: #f9f9f9;
+            padding: 15px 20px;
+        }
+
+        .article-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+        }
+
+        .article-content table th {
+            background-color: #c41e3a;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .article-content table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .article-content table tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .article-content strong {
+            color: #222;
+            font-weight: 600;
+        }
+
+        .alert-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+
+        .alert-box strong {
+            color: #856404;
+        }
+
+        .images-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .image-item {
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-item-caption {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-top: 1px solid #ddd;
+        }
+
+        .call-to-action {
+            background-color: #c41e3a;
+            color: white;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 30px 0;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .call-to-action a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .hr-line {
+            border: none;
+            border-top: 2px solid #c41e3a;
+            margin: 30px 0;
+        }
+
+        .image-legend {
+            font-size: 13px;
+            color: #666;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 3px solid #c41e3a;
+            margin-top: 30px;
+        }
+
+        .image-legend strong {
+            color: #222;
+        }
+
+        footer {
+            background-color: #333;
+            color: #999;
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .images-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav li {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">Midi Libre</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#sport">Sport</a></li>
+            <li><a href="#faits-divers">Faits divers</a></li>
+            <li><a href="#actu">Actu</a></li>
+            <li><a href="#loisirs">Loisirs</a></li>
+            <li><a href="#annonces">Annonces</a></li>
+        </ul>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="#accueil">Accueil</a> / <a href="#faits-divers">Faits divers</a>
+    </div>
+
+    <div class="container">
+        <article>
+            <div class="article-header">
+                <span class="category">Faits divers</span>
+                <h1>Allons-nous enfin mettre la main sur ce chieur en série ? (Toute la police française à sa recherche)</h1>
+                <div class="article-meta">
+                    <strong>Par Manus AI</strong> | Publié le 22/10/2025 à 18:00
+                </div>
+            </div>
+
+            <div class="featured-image">
+                <img src="surveillance_image_3.png" alt="Le suspect au milieu d'un vestiaire de club sportif">
+
+                <div class="image-caption">Le suspect au milieu d'un vestiaire, capturé par une caméra de surveillance de mauvaise qualité.</div>
+            </div>
+
+            <div class="article-content">
+                <p><strong>L'affaire prend une ampleur nationale. Surnommé par les enquêteurs le "Chieur Fantôme", un individu insaisissable sème le trouble et l'indignation en laissant derrière lui des "souvenirs" olfactifs dans les lieux publics et privés les plus inattendus. Après des mois d'enquête, la police nationale lance un appel à témoins désespéré. Une récompense record pourrait être à la clé.</strong></p>
+
+                <p>L'histoire de ce délinquant d'un genre nouveau, dont l'audace n'a d'égale que l'impunité, a commencé comme une simple série de nuisances locales. Rapidement, les signalements se sont multipliés, dessinant la carte d'un véritable <strong>tour de France des incivilités gastro-intestinales</strong>. Le mode opératoire est toujours le même : une intrusion discrète, un soulagement express, et une évasion sans laisser d'autres traces que l'évidence d'un méfait.</p>
+
+                <h2>Des lieux insolites, un profil mystérieux</h2>
+
+                <p>Les enquêteurs de la <strong>Direction Centrale de la Police Judiciaire (DCPJ)</strong>, mobilisés sur cette affaire hors du commun, ont pu établir une liste impressionnante de ses "zones d'opérations". Des sous-sols d'immeubles résidentiels (comme ici à Montpellier, où il avait été repéré descendant des escaliers) aux vestiaires sportifs en passant par les coins sombres de salles de restaurant, rien ne semble arrêter l'homme.</p>
+
+                <blockquote>
+                    "C'est un véritable caméléon. Il se fond dans la masse, agit en quelques minutes et disparaît. La seule constante, ce sont ses 'signatures' et, heureusement pour nous, les quelques clichés de vidéosurveillance de très mauvaise qualité que nous avons pu récupérer," confie, sous couvert d'anonymat, un officier de police.
+                </blockquote>
+
+                <p>Les images, bien que floues et granuleuses, montrent un homme d'une trentaine d'années, au physique athlétique, dont les expressions trahissent parfois la <strong>précipitation</strong> ou la <strong>douleur</strong> d'une envie irrépressible. Ces clichés sont aujourd'hui la seule piste concrète de la police.</p>
+
+                <div class="images-grid">
+                    <div class="image-item">
+                        <img src="surveillance_image_1.png" alt="Escaliers de sous-sol">
+                        <div class="image-item-caption">Escaliers de sous-sol d'immeuble (Montpellier) - 12/09/2025</div>
+                    </div>
+                    <div class="image-item">
+                        <img src="surveillance_image_2.png" alt="Douches communes d'hôtel">
+                        <div class="image-item-caption">Douches communes d'un hôtel (PARIS) - 05/10/2025</div>
+                    </div>
+                    <div class="image-item">
+                        <img src="surveillance_image_3.png" alt="Vestiaire de club sportif">
+                        <div class="image-item-caption">Vestiaire d'un club de sport (Montpellier GRAMOND) - 18/10/2025</div>
+                    </div>
+                    <div class="image-item">
+                        <img src="surveillance_image_4.png" alt="Coin de salle de restaurant">
+                        <div class="image-item-caption">Coin de salle de restaurant (Montpellier Chinois a la Gare ) - 21/10/2025</div>
+                    </div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Lieu de l'infraction</th>
+                            <th>Date estimée</th>
+                            <th>Degré d'audace</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Escaliers de sous-sol d'immeuble (Montpellier)</td>
+                            <td>12/09/2025</td>
+                            <td>Élevé</td>
+                        </tr>
+                        <tr>
+                            <td>Douches communes d'un hôtel (PARIS)</td>
+                            <td>05/10/2025</td>
+                            <td>Très Élevé</td>
+                        </tr>
+                        <tr>
+                            <td>Vestiaire d'un club de sport (Montpellier GRAMOND)</td>
+                            <td>18/10/2025</td>
+                            <td>Modéré</td>
+                        </tr>
+                        <tr>
+                            <td>Coin de salle de restaurant (Montpellier Chinois a la Gare)</td>
+                            <td>21/10/2025</td>
+                            <td>Extrême</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>L'appel à témoins de la dernière chance</h2>
+
+                <p>Face à la pression médiatique et à l'ampleur des dégâts (estimés à plusieurs dizaines de milliers d'euros en frais de nettoyage et de désinfection), les autorités ont décidé de passer à la vitesse supérieure. La police lance un appel solennel à la population.</p>
+
+                <p>"Nous sommes convaincus que quelqu'un, quelque part, a déjà croisé cet individu, ou a été témoin d'un de ses méfaits. Toute information, même la plus anodine, peut être la clé pour mettre fin à cette série d'actes délictueux et, disons-le, <strong>profondément dégoûtants</strong>," a déclaré le porte-parole du Ministère de l'Intérieur.</p>
+
+                <div class="alert-box">
+                    <strong>Si vous reconnaissez cet homme ou si vous détenez des informations permettant de l'identifier, veuillez contacter immédiatement le numéro vert de la police nationale au 0 800 10 20 30 (appel gratuit).</strong>
+                </div>
+
+                <hr class="hr-line">
+
+                <div class="image-legend">
+                    <strong>Légendes des images :</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li><strong>Image 1 :</strong> Le suspect descendant les escaliers d'un sous-sol, visiblement pressé.</li>
+                        <li><strong>Image 2 :</strong> Le "Chieur Fantôme" dans une zone de douches d'hôtel, où il aurait commis l'un de ses actes les plus audacieux.</li>
+                        <li><strong>Image 3 :</strong> Une autre apparition dans un vestiaire de club sportif.</li>
+                        <li><strong>Image 4 :</strong> L'un des clichés les plus récents, pris dans le coin d'une salle de restaurant à l'heure de la fermeture.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Midi Libre. Tous droits réservés. | <a href="#" style="color: #999;">Mentions légales</a> | <a href="#" style="color: #999;">Nous contacter</a></p>
+    </footer>
+</body>
+</html>
